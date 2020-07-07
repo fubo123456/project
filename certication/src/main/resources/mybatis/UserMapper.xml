@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ps.sec.mapper.UserMapper">
+    <resultMap id="baseMap" type="com.ps.sec.domain.User">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="residentId" column="resident_id"/>
+       <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="year" column="year"/>
+        <result property="month" column="month"/>
+        <result property="day" column="day"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="area" column="area"/>
+        <result property="street" column="street"/>
+        <result property="address" column="address"/>
+        <result property="membership" column="membership"/>
+        <result property="registrationTime" column="registration_time"/>
+    </resultMap>
+
+
+    <insert id="addUserInfo" parameterType="java.util.List">
+        insert into user
+        (id,user_id,username,password,resident_id,name,sex,phone_number,year,month,day,province,city,area,street,address,membership,registration_time)
+        values
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.id},#{item.userId},#{item.username},#{item.password},#{item.residentId},#{item.name},#{item.sex},#{item.phoneNumber},
+            #{item.year},#{item.month},#{item.day},#{item.province},#{item.city},#{item.area},#{item.street},#{item.address},#{item.membership},#{item.registrationTime})
+        </foreach>
+    </insert>
+
+</mapper>

@@ -1,0 +1,19 @@
+
+server:
+  port: 9090
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.31.249:3306/povacare?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Mypass123456!
+
+mybatis:
+  mapper-locations: classpath*:mybatis/*.xml
+
+jwt:
+  token-header-key: Authorization
+  token-prefix: NonceToken
+  token-expiration: 43200000 #12*60*60*1000 12Сʱ
+  token-secret: NonceJwtSecret
